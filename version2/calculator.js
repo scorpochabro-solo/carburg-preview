@@ -4,11 +4,10 @@ const calcForm = document.querySelector('.calc-form');
     const calcResultData = document.getElementById('calcResultData');
     const calcCurrency = document.getElementById('calcCurrency');
     const calcStatus = document.getElementById('calcStatus');
-    let revision = 0;
+    const germanQuote = document.getElementById('germanQuote');
 
     // A previous estimate is not valid after changing the market or vehicle.
     calcForm.addEventListener('input', () => {
-        revision++;
         calcStatus.textContent = '';
         calcResultData.style.display = 'none';
         calcResult.querySelector('.calc-result-placeholder').style.display = '';
@@ -112,68 +111,45 @@ const calcForm = document.querySelector('.calc-form');
         return isNew ? 3661900 : 5245200;
     }
 
-    // Update currency symbol based on country
-    document.querySelectorAll('input[name="country"]').forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            const cfg = countryConfig[e.target.value];
-            calcCurrency.textContent = cfg ? cfg.symbol : '$';
-        });
-    });
+    function selectMarket() {
+        const country = calcForm.elements.country.value;
+        const germany = country === 'germany';
+        germanQuote.style.display = germany ? '' : 'none';
+        calcForm.querySelector('.vehicle-fields').style.display = germany ? 'none' : '';
+        document.getElementById('calcPrice').disabled = germany;
+        document.getElementById('calcBtn').style.display = germany ? 'none' : '';
+        calcResult.style.display = germany ? 'none' : '';
+        calcCurrency.textContent = countryConfig[country].symbol;
+    }
+    calcForm.elements.country.forEach(radio => radio.addEventListener('change', selectMarket));
+    selectMarket();
 
     if (calcForm) {
-        calcForm.addEventListener('submit', async (event) => {
+        calcForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const country = document.querySelector('input[name="country"]:checked').value;
+            if (country === 'germany') { germanQuote.click(); return; }
             const price = parseFloat(document.getElementById('calcPrice').value);
             const engineCc = parseInt(document.getElementById('calcEngine').value);
             const age = document.getElementById('calcAge').value;
 
             if (!document.getElementById("calcPrice").reportValidity() || !Number.isFinite(price) || price <= 0) return;
 
-            const cfg = countryConfig[country] || countryConfig.germany;
-            const current = ++revision;
-            let priceRate = cfg.rate, officialEur = EUR_RATE, discountLimit = 0;
-            const rateNote = document.getElementById('rateNote');
-            if (country === 'germany') {
-                calcResultData.style.display = 'none';
-                calcResult.querySelector('.calc-result-placeholder').style.display = '';
-                if (document.documentElement.hasAttribute('data-static-preview')) {
-                    calcStatus.textContent = 'В демоверсии нет актуального курса. Пример расчёта доступен по ссылке над формой.';
-                    return;
-                }
-                calcStatus.textContent = 'Проверяем курс евро…';
-                try {
-                    const res = await fetch('/api/quotes/germany/pricing', {credentials:'omit', signal:AbortSignal.timeout(12000)});
-                    if (!res.ok) throw Error();
-                    const {fx, service_discount_limit} = await res.json();
-                    if (current !== revision) return;
-                    priceRate = Number(fx.client_rate);
-                    officialEur = Number(fx.rate);
-                    if (!(priceRate > 0 && officialEur > 0 && Number.isSafeInteger(service_discount_limit) && service_discount_limit >= 0)) throw Error();
-                    discountLimit = service_discount_limit;
-                    rateNote.textContent = 'Расчётный курс: '+String(fx.rate).replace('.',',')+' + '+String(fx.markup).replace('.',',')+' = '+String(fx.client_rate).replace('.',',')+' ₽/EUR. Курс ЦБ на '+fx.date+'.';
-                } catch {
-                    if (current === revision) calcStatus.textContent = 'Не удалось подтвердить курс евро. Повторите расчёт позже.';
-                    return;
-                }
-            }
-            rateNote.hidden = country !== 'germany';
-            calcStatus.textContent = '';
-
+            const cfg = countryConfig[country];
             // 1. Стоимость авто в рублях
-            const carPriceRub = price * priceRate;
+            const carPriceRub = price * cfg.rate;
 
             // 2. Доставка до РФ
             const delivery = cfg.delivery;
 
             // 3. Таможенная стоимость (CV)
-            const cvRub = (country === 'germany' ? price * officialEur : carPriceRub) + delivery;
+            const cvRub = carPriceRub + delivery;
 
             // 4. Таможенный сбор (F)
             const feeRub = getCustomsFee(cvRub);
 
             // 5. Таможенная пошлина (D) — единая ставка, физлицо
-            const dutyRub = getDutyRub(age, engineCc, cvRub, officialEur);
+            const dutyRub = getDutyRub(age, engineCc, cvRub, EUR_RATE);
 
             // 6. Утилизационный сбор (U) — коммерческий, среднее
             const utilRub = getUtilFee(engineCc, age);
@@ -183,10 +159,9 @@ const calcForm = document.querySelector('.calc-form');
 
             // 8. Услуги CARBURG — 10% от стоимости авто
             const serviceFee = Math.round(carPriceRub * 0.10);
-            const discount = Math.min(serviceFee, discountLimit);
 
             // Итого
-            const total = carPriceRub + delivery + feeRub + dutyRub + utilRub + sbkts + serviceFee - discount;
+            const total = carPriceRub + delivery + feeRub + dutyRub + utilRub + sbkts + serviceFee;
 
             // Форматирование
             const fmt = (n) => Math.round(n).toLocaleString('ru-RU') + ' \u20bd';
@@ -198,8 +173,6 @@ const calcForm = document.querySelector('.calc-form');
             document.getElementById('resUtil').textContent = fmt(utilRub);
             document.getElementById('resSbkts').textContent = fmt(sbkts);
             document.getElementById('resService').textContent = fmt(serviceFee);
-            document.getElementById('discountRow').hidden = !discount;
-            document.getElementById('resDiscount').textContent = discount ? '−'+fmt(discount) : '';
             document.getElementById('resTotal').textContent = fmt(total);
 
             // Show result
