@@ -159,7 +159,7 @@ const atlas=document.querySelector('.atlas'), poster=atlas.querySelector('.route
 const picker=document.createElement('div');
 picker.className='route-picker';
 const select=document.createElement('select');
-select.setAttribute('aria-label','Страна подбора');
+select.setAttribute('aria-label','Страна покупки');
 const slot=document.createElement('label'), count=document.createElement('small');
 slot.className='route-choice';
 const previous=createButton('Предыдущая страна',()=>selectMarket(currentMarket-1));
@@ -175,12 +175,12 @@ function renderMarket(index){
     if(!motion.matches && typeof art.animate==='function')art.animate([{opacity:.65,transform:'scale(1.035)'},{opacity:1,transform:'scale(1)'}],{duration:460});
   }
   currentMarket=index;
-  art.alt=code==='RU'?'Иллюстрация: Audi RS 6 Avant у Главного ярмарочного дома в Нижнем Новгороде':model+', '+place;
+  art.alt=model+', '+place;
   byId('market-model').textContent=model;
   byId('market-place').textContent=place;
   byId('market-origin').textContent=country;
   poster.dataset.market=code;
-  poster.querySelector('.route-index').replaceChildren(document.createTextNode(code),document.createElement('i'),document.createTextNode(code==='RU'?'Подбор':'RU'));
+  poster.querySelector('.route-index').replaceChildren(document.createTextNode(code),document.createElement('i'),document.createTextNode('RU'));
   count.textContent=pad(index+1)+' / '+pad(markets.length);
   select.value=code;
 }
