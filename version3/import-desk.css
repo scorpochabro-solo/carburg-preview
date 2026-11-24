@@ -1,0 +1,186 @@
+/* Shared by the import estimate and the Germany route only. */
+.import-page {
+  --sheet: #f5f3ec;
+  --type: #19221e;
+  --secondary: #4a5550;
+  --hairline: #bcc2b9;
+  --forest: #164837;
+  --signal: #b73d19;
+  --edge: clamp(16px, 5.2vw, 90px);
+}
+.import-page main { background: var(--sheet); color: var(--type); color-scheme: light; }
+.import-width { width: min(calc(100% - var(--edge) * 2), 1440px); margin-inline: auto; }
+.import-page h1, .import-page main h2, .import-page main h3 {
+  margin: 0; text-transform: none; letter-spacing: -.035em; line-height: 1.07;
+}
+.import-page h1 { font-weight: 550; font-size: clamp(3rem, 6.8vw, 7.6rem); }
+.import-page h1 em { font-style: normal; }
+.import-page main h2 { font: 500 clamp(2rem, 3.4vw, 3.8rem)/1.1 var(--display); letter-spacing: -.035em; }
+.import-page main p { text-wrap: pretty; }
+.import-button {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  min-height: 48px; padding: .8rem 1.3rem; border-radius: 5px;
+  background: var(--forest); color: white; font: 600 1rem/1.35 Inter, sans-serif;
+  transition: background-color .18s ease;
+}
+.import-button span, .receipt-link span { font: 400 1.35em/1 sans-serif; }
+.import-button:hover { background: #0b3024; }
+.import-page main :focus-visible { outline: 3px solid #1476c3; outline-offset: 3px; }
+
+/* A catalog plate: keep the entire car, independent of the text crop. */
+.de-hero {
+  background: linear-gradient(108deg, #eeeee3 0%, #e9ede0 43%, #cfdccc 100%);
+  overflow: clip;
+}
+.de-spread {
+  display: grid; grid-template-columns: minmax(0, .86fr) minmax(0, 1.35fr);
+  align-items: center; padding-block: clamp(52px, 6vw, 100px); isolation: isolate;
+}
+.de-copy { position: relative; z-index: 1; }
+.de-copy h1 { font-size: clamp(4.3rem, 8.3vw, 9rem); }
+.de-copy em { display: block; color: var(--forest); }
+.de-copy p { max-width: 39ch; margin: 1.35rem 0 1.6rem; color: var(--secondary); }
+.de-stage {
+  position: relative; display: grid; align-items: center; min-width: 0;
+  margin-right: calc(var(--edge) * -.44); min-height: clamp(240px, 25vw, 450px);
+}
+.de-stage::before {
+  content: ""; position: absolute; inset: -30% -15% -32% -4%; z-index: -2;
+  background-image: linear-gradient(#315a451c 1px, transparent 1px), linear-gradient(90deg, #315a451c 1px, transparent 1px);
+  background-size: clamp(24px, 3vw, 54px) clamp(24px, 3vw, 54px);
+  mask-image: radial-gradient(ellipse at 64% 53%, black 10%, transparent 73%);
+}
+.road-lines { position: absolute; width: 125%; height: 160%; left: -8%; top: -27%; color: #68866d75; z-index: -1; }
+.de-stage img { display: block; width: 100%; height: auto; filter: drop-shadow(0 17px 9px #1c352a35); }
+.route-strip { background: var(--forest); color: #fff; }
+.route-track { display: flex; align-items: center; gap: clamp(12px, 2vw, 32px); min-height: 64px; }
+.route-track span { font: 500 clamp(1rem, 1.3vw, 1.4rem)/1.2 var(--display); }
+.route-track i { flex: 1; height: 1px; position: relative; background: #a1b9a7; }
+.route-track i::after {
+  content: ""; position: absolute; right: 0; top: -3px; width: 6px; height: 6px;
+  border-top: 1px solid #c5d6ca; border-right: 1px solid #c5d6ca; transform: rotate(45deg);
+}
+.process-sheet {
+  display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1fr); align-items: center;
+  gap: clamp(32px, 6vw, 110px); padding-block: clamp(44px, 6.5vw, 100px);
+}
+.process-image { align-self: stretch; min-height: 320px; position: relative; }
+.process-image img { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: 58% center; }
+.route-steps { counter-reset: stage; list-style: none; margin: 1.5rem 0 0; padding: 0; }
+.route-steps li {
+  counter-increment: stage; display: grid; grid-template-columns: 2rem 1fr; gap: 1rem;
+  border-top: 1px solid var(--hairline); padding: 1.15rem 0;
+}
+.route-steps li:last-child { padding-bottom: 0; }
+.route-steps li::before { content: counter(stage, decimal-leading-zero); font: .9rem/2 var(--mono); color: #486650; }
+.route-steps h3 { font: 600 1.15rem/1.4 Inter, sans-serif; }
+.route-steps p { margin-top: .4rem; max-width: 54ch; color: var(--secondary); }
+
+/* A working sheet paired with a separate, high-contrast estimate. */
+.estimate { padding-block: clamp(32px, 4.2vw, 72px) clamp(44px, 6vw, 100px); }
+.estimate-intro {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .8fr);
+  gap: clamp(24px, 5vw, 100px); align-items: end; margin-bottom: clamp(24px, 3.2vw, 50px);
+}
+.estimate-intro h1 em { color: var(--signal); display: block; }
+.estimate-intro p { max-width: 45ch; color: var(--secondary); margin-bottom: .3em; }
+.estimate-desk {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .8fr); align-items: start;
+  gap: clamp(14px, 1.6vw, 28px);
+}
+.calc-form, .estimate-slip { padding: clamp(20px, 2.6vw, 46px); }
+.calc-form { background: #fffefa; border: 1px solid #c7c9bd; }
+.import-page .estimate-desk h2 { font-size: clamp(1.65rem, 2.3vw, 2.65rem); }
+.calc-form label:not(.market-list label), .calc-form legend { display: block; font-weight: 600; margin-bottom: .5rem; }
+.market-field { min-inline-size: 0; padding: 0; margin: 1.6rem 0; border: 0; }
+.market-field legend { padding: 0; }
+.market-list { display: flex; flex-wrap: wrap; gap: .4rem; }
+.market-list label {
+  display: flex; align-items: center; gap: .4rem; padding: .55rem .7rem; min-height: 44px;
+  border: 1px solid #a6ada4; border-radius: 3px; font-size: .9rem; cursor: pointer;
+}
+.market-list label:has(:checked) { background: var(--type); color: white; border-color: var(--type); }
+.market-list input { width: 1em; height: 1em; margin: 0; accent-color: var(--type); }
+.market-list label:has(:focus-visible) { outline: 3px solid #1476c3; outline-offset: 2px; }
+.vehicle-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 1rem; }
+.price-field { grid-column: 1 / -1; }
+.price-input, .vehicle-fields select {
+  display: flex; align-items: center; width: 100%; min-height: 50px; margin: 0;
+  background: #f7f7f0; border: 1px solid #9ca59c; border-radius: 3px; color: var(--type);
+  font: 450 1rem/1.4 Inter, sans-serif;
+}
+.vehicle-fields select { display: block; padding: .65rem .55rem; }
+.price-input { gap: .5rem; padding-inline: .9rem; }
+.price-input:focus-within { outline: 3px solid #1476c3; outline-offset: 2px; }
+.price-input input { width: 100%; min-width: 0; min-height: 48px; border: 0; background: none; font: inherit; color: inherit; }
+.price-input input::placeholder { color: #646c63; }
+.import-page .price-input input:focus-visible { outline: none; }
+#calcCurrency { font: 500 1.3rem/1 var(--mono); }
+.calc-form .import-button { margin-top: 1.5rem; width: 100%; background: var(--signal); }
+.calc-form .import-button:hover { background: #8b3017; }
+.estimate-slip {
+  background: #252b28; color: #fff9eb; border-top: 4px solid #ef956e;
+  background-image: linear-gradient(145deg, #333a35, #202623 75%);
+  min-width: 0; color-scheme: dark;
+}
+.slip-visual {
+  margin-block: 1.15rem; display: grid; place-items: center; padding: 1.5rem .4rem;
+  background-image: linear-gradient(#e4edd311 1px, transparent 1px), linear-gradient(90deg, #e4edd311 1px, transparent 1px);
+  background-size: 26px 26px; border-block: 1px dashed #687169;
+}
+.slip-visual img { display: block; width: min(90%, 390px); height: auto; aspect-ratio: 2.1; object-fit: contain; }
+.calc-result-placeholder p, .slip-note { color: #d2d7cf; max-width: 43ch; }
+.slip-total { margin: 1.5rem 0 .8rem; padding-block: 1rem; border-block: 1px dashed #899188; }
+.slip-total span { display: block; font-size: .9rem; color: #d2d7cf; }
+.slip-total strong { display: block; margin-top: .2rem; font: 500 clamp(2.1rem, 3.5vw, 4rem)/1.2 var(--display); color: #ffb392; overflow-wrap: anywhere; }
+.slip-lines { margin: 0; }
+.slip-lines div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .55rem 0; border-bottom: 1px solid #58615b; font-size: .94rem; }
+.slip-lines div[hidden], .slip-note[hidden], #calcStatus:empty { display: none; }
+.slip-lines dd { min-width: 0; margin: 0; text-align: right; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; font-weight: 550; }
+.slip-note { margin: 1rem 0 .3rem; font-size: .88rem; }
+.receipt-link { display: inline-flex; align-items: center; gap: 1rem; min-height: 44px; text-decoration: underline; text-underline-offset: .25em; }
+
+/* Common handoff and directory. */
+.import-contact { background: #dae4d6; border-block: 1px solid #b8c6b5; }
+.estimate-page .import-contact { background: #e9e5d9; border-color: #cdc8ba; }
+.contact-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding-block: clamp(30px, 4vw, 64px); gap: 1.3rem 2rem; }
+.contact-inner p { margin-top: .65rem; color: var(--secondary); }
+.contact-inner .import-button { background: var(--type); }
+.contact-inner .import-button:hover { background: #34473c; }
+.directory { background: #181d1a; color: #f0f0e7; }
+.directory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding-block: clamp(32px, 4.5vw, 74px); }
+.import-page .directory-grid h2 { font: 500 1.6rem/1.2 var(--display); margin-bottom: .6rem; }
+.directory-grid a { display: flex; align-items: center; width: fit-content; min-height: 44px; font-size: .94rem; color: #c9d0c9; }
+.directory-grid a:hover, .directory-grid a[aria-current] { text-decoration: underline; text-underline-offset: .3em; color: white; }
+@media (max-width: 880px) {
+  .estimate-intro { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .estimate-desk { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+  .vehicle-fields { grid-template-columns: 1fr; }
+  .de-spread { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .de-copy h1 { font-size: clamp(3.6rem, 8vw, 4.5rem); }
+}
+@media (max-width: 700px) {
+  .estimate-intro, .estimate-desk, .de-spread, .process-sheet { grid-template-columns: minmax(0, 1fr); }
+  .estimate-intro { gap: 1rem; }
+  .estimate-desk { gap: 1rem; }
+  .de-spread { padding-block: 2rem 1.5rem; gap: .75rem; }
+  .de-copy h1 { font-size: clamp(3.8rem, 12vw, 5rem); }
+  .de-copy p { margin-block: 1rem; }
+  .de-stage { width: min(100%, 520px); margin: .5rem auto 0; min-height: 0; }
+  .de-stage::before { inset: -12% -6%; }
+  .road-lines { height: 135%; top: -18%; }
+  .route-track { min-height: 50px; }
+  .process-sheet { gap: 1.6rem; }
+  .process-image { min-height: 0; aspect-ratio: 1.95; }
+  .process-image img { object-position: 50% 61%; }
+  .directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}
+@media (max-width: 500px) {
+  .calc-form, .estimate-slip { padding: 1.1rem; }
+  .market-list label { flex: 1 0 29%; justify-content: center; }
+  .directory-grid { grid-template-columns: 1fr; }
+  .directory-grid > div + div { border-top: 1px solid #485149; padding-top: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .import-button { transition: none; }
+}

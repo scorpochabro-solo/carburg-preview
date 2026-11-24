@@ -1,0 +1,124 @@
+<!doctype html>
+<html data-static-preview lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>Калькулятор стоимости привоза и растаможки авто | CARBURG</title><meta name="description" content="Сравните стоимость автомобиля, доставки, таможенных платежей и оформления. Расчёт ориентировочный, использует фиксированные значения; точный бюджет уточнит менеджер."><link rel="icon" href="shared/assets/favicon.ico"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="import-desk.css"><script src="interior.js" defer></script><script src="calculator.js" defer></script><link rel="canonical" href="https://carburg.pro/calculator.html"><meta property="og:type" content="website"><meta property="og:locale" content="ru_RU"><meta property="og:site_name" content="CARBURG"><meta property="og:url" content="https://carburg.pro/calculator.html"><meta property="og:title" content="Калькулятор стоимости привоза и растаможки авто | CARBURG"><meta property="og:description" content="Сравните стоимость автомобиля, доставки, таможенных платежей и оформления. Расчёт ориентировочный, использует фиксированные значения; точный бюджет уточнит менеджер."><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"AutoDealer","@id":"https://carburg.pro/#dealer","name":"CARBURG","url":"https://carburg.pro/","telephone":"+78314105757","address":{"@type":"PostalAddress","addressLocality":"Нижний Новгород","streetAddress":"Светлогорский проезд, 3","addressCountry":"RU"}},{"@type":"WebPage","@id":"https://carburg.pro/calculator.html#page","url":"https://carburg.pro/calculator.html","name":"Калькулятор стоимости привоза и растаможки авто","description":"Сравните стоимость автомобиля, доставки, таможенных платежей и оформления. Расчёт ориентировочный, использует фиксированные значения; точный бюджет уточнит менеджер.","inLanguage":"ru","publisher":{"@id":"https://carburg.pro/#dealer"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CARBURG","item":"https://carburg.pro/"},{"@type":"ListItem","position":2,"name":"Калькулятор привоза авто","item":"https://carburg.pro/calculator.html"}]}]}</script><script src="editorial.js?v=6" defer></script></head><body class="import-page estimate-page"><a class="skip" href="#main">К содержанию</a><header class="mast">
+  <a class="brand" href="index.html" aria-label="CARBURG, на главную"><i aria-hidden="true"></i>CARBURG</a>
+  <nav id="nav" aria-label="Основная навигация">
+    <a href="index.html#process">Как работаем</a><a href="index.html#markets">Откуда привозим</a><a href="index.html#services">Услуги</a><a href="index.html#clients">Клиенты</a><a href="index.html#office">Контакты</a><a href="cabinet.html" aria-label="Личный кабинет">Кабинет</a>
+  </nav>
+  <a class="pill header-cta" href="index.html#office">Подобрать авто <span aria-hidden="true">↗</span></a>
+  <button id="menu" aria-controls="nav" aria-expanded="false" aria-label="Открыть меню"><i></i><i></i></button>
+</header>
+<main id="main">
+  <div class="estimate import-width">
+    <header class="estimate-intro">
+      <h1>Калькулятор <em>привоза авто</em></h1>
+      <a class="receipt-link" href="germany-quote.html">Германия: посмотреть пример расчёта PDF →</a>
+      <p>В демоверсии расчёт по Германии доступен в готовом PDF. На основном сайте стоимость автомобиля считаем по курсу ЦБ + 3,50 ₽ за евро. Для остальных стран используем фиксированные ориентиры. Точный бюджет уточнит менеджер.</p>
+    </header>
+    <div class="estimate-desk">
+      <form class="calc-form" aria-labelledby="params-title">
+        <h2 id="params-title">Параметры автомобиля</h2>
+        <fieldset class="market-field">
+          <legend>Страна покупки</legend>
+          <div class="market-list">
+            <label><input type="radio" name="country" value="germany" checked> Германия</label>
+            <label><input type="radio" name="country" value="china"> Китай</label>
+            <label><input type="radio" name="country" value="usa"> Америка</label>
+            <label><input type="radio" name="country" value="uae"> Эмираты</label>
+            <label><input type="radio" name="country" value="korea"> Корея</label>
+          </div>
+        </fieldset>
+        <div class="vehicle-fields">
+          <div class="price-field">
+            <label for="calcPrice">Стоимость авто в валюте страны</label>
+            <div class="price-input">
+              <input type="number" id="calcPrice" placeholder="Например: 25000" min="0.01" step="any" required inputmode="decimal" aria-describedby="calcCurrency">
+              <span id="calcCurrency">€</span>
+            </div>
+          </div>
+          <div>
+            <label for="calcEngine">Объём двигателя</label>
+            <select id="calcEngine">
+              <option value="1000">До 1000 см³</option>
+              <option value="1500" selected>1000 – 1500 см³</option>
+              <option value="1800">1500 – 1800 см³</option>
+              <option value="2300">1800 – 2300 см³</option>
+              <option value="3000">2300 – 3000 см³</option>
+              <option value="3001">Более 3000 см³</option>
+            </select>
+          </div>
+          <div>
+            <label for="calcAge">Возраст автомобиля</label>
+            <select id="calcAge">
+              <option value="new">Новый (до 3 лет)</option>
+              <option value="3-5" selected>3 – 5 лет</option>
+              <option value="5-7">5 – 7 лет</option>
+              <option value="old">Более 7 лет</option>
+            </select>
+          </div>
+        </div>
+        <button class="import-button" type="submit" id="calcBtn">Рассчитать <span aria-hidden="true">→</span></button>
+        <p role="status" id="calcStatus"></p>
+      </form>
+
+      <section class="estimate-slip" id="calcResult" aria-labelledby="estimate-title">
+        <h2 id="estimate-title">Примерный расчёт</h2>
+        <div class="calc-result-placeholder">
+          <div class="slip-visual" aria-hidden="true">
+            <img src="media/senna-cut.webp" alt="">
+          </div>
+          <p>Укажите параметры и нажмите «Рассчитать». Здесь появится стоимость под ключ и разбивка по расходам.</p>
+        </div>
+        <div id="calcResultData" aria-live="polite" style="display:none">
+          <p class="slip-total" id="estimate-total" tabindex="-1"><span>Итого под ключ</span><strong id="resTotal">-</strong></p>
+          <dl class="slip-lines">
+            <div><dt>Стоимость авто</dt><dd id="resCarPrice">-</dd></div>
+            <div><dt>Доставка до РФ</dt><dd id="resDelivery">-</dd></div>
+            <div><dt>Таможенный сбор</dt><dd id="resFee">-</dd></div>
+            <div><dt>Таможенная пошлина</dt><dd id="resCustoms">-</dd></div>
+            <div><dt>Утилизационный сбор</dt><dd id="resUtil">-</dd></div>
+            <div><dt>СБКТС + ЭПТС</dt><dd id="resSbkts">-</dd></div>
+            <div><dt>Услуги CARBURG</dt><dd id="resService">-</dd></div>
+            <div id="discountRow" hidden><dt>Новогодняя скидка на услуги CARBURG</dt><dd id="resDiscount"></dd></div>
+          </dl>
+          <p class="slip-note" id="rateNote" hidden></p>
+          <p class="slip-note">Расчёт приблизительный. Точную стоимость уточняйте у менеджера.</p>
+          <a class="receipt-link" href="https://t.me/carburg_echteautos">Получить точный расчёт <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+  <aside class="import-contact"><div class="import-width contact-inner">
+    <div><h2>Обсудим ваш автомобиль?</h2><p>Уже нашли автомобиль? Пришлите ссылку менеджеру для точного расчёта.</p></div>
+    <a class="import-button" href="https://t.me/carburg_echteautos">Написать в Telegram <span aria-hidden="true">↗</span></a>
+  </div></aside>
+  <nav class="directory" aria-label="Все направления CARBURG">
+    <div class="import-width directory-grid">
+      <div><h2>Импорт</h2>
+        <a href="import.html">Привоз авто из-за границы</a>
+        <a href="germany.html">Авто из Германии</a>
+        <a href="china.html">Авто из Китая</a>
+        <a href="usa.html">Авто из США</a>
+        <a href="uae.html">Авто из ОАЭ</a>
+        <a href="korea.html">Авто из Кореи</a>
+      </div>
+      <div><h2>Подбор и продажа</h2>
+        <a href="rus-cars.html">Автоподбор в России</a>
+        <a href="inspection.html">Выездной осмотр авто</a>
+        <a href="new-cars.html">Новые автомобили под заказ</a>
+        <a href="used-cars.html">Автомобили с пробегом</a>
+        <a href="trade-in.html">Обмен автомобиля</a>
+        <a href="buyout.html">Выкуп автомобилей</a>
+        <a href="import-trade-in.html">Импорт с трейд-ин</a>
+        <a href="commission.html">Комиссионная продажа</a>
+      </div>
+      <div><h2>Стоимость и каталог</h2>
+        <a href="credit.html">Авто в кредит</a>
+        <a href="insurance.html">Страхование автомобиля</a>
+        <a href="stock.html">Автомобили в наличии</a>
+        <a href="order.html">Каталог авто под заказ</a>
+        <a href="calculator.html">Калькулятор привоза авто</a>
+      </div>
+    </div>
+  </nav>
+</main>
+<footer><a class="brand" href="index.html"><i aria-hidden="true"></i>CARBURG</a><a href="privacy.html">Конфиденциальность</a><a href="#main">Наверх ↑</a></footer></body></html>

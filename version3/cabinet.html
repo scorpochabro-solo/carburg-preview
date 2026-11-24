@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru" data-static-preview><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="same-origin"><meta name="theme-color" content="#151718">
+<title>Личный кабинет клиента | CARBURG</title>
+<link rel="icon" href="shared/assets/favicon.ico"><link rel="stylesheet" href="style.css?v=8"><link rel="stylesheet" href="cabinet.css?v=1"><script src="cabinet.js?v=1" defer></script>
+</head><body class="cab-page">
+<a class="skip" href="#main">К содержанию</a>
+<header class="cab-mast"><a class="brand" href="index.html" aria-label="CARBURG, на главную">CARBURG</a><a href="index.html">На сайт <span aria-hidden="true">↗</span></a></header>
+<main id="main">
+<section class="cab-entry" id="entry" aria-labelledby="entry-title">
+  <div class="ignition" id="ignition">
+    <svg class="mechanism" viewBox="0 0 700 450" role="img" aria-label="Автомобильный ключ напротив личинки замка в ручке двери">
+      <defs>
+        <linearGradient id="shell" x2=".14" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#a7adb0"/><stop offset=".055" stop-color="#d8d9d4"/><stop offset=".17" stop-color="#747a7d"/><stop offset=".43" stop-color="#373c3e"/><stop offset=".7" stop-color="#171b1e"/><stop offset=".96" stop-color="#282c2c"/><stop offset="1" stop-color="#909396"/></linearGradient>
+        <linearGradient id="metal" x1="0" y1="0" x2=".28" y2="1"><stop stop-color="#f2f0e8"/><stop offset=".2" stop-color="#c4c9ca"/><stop offset=".46" stop-color="#626b6e"/><stop offset=".52" stop-color="#e5e8e5"/><stop offset=".71" stop-color="#8c9597"/><stop offset="1" stop-color="#42494b"/></linearGradient>
+        <linearGradient id="grip" x2=".3" y2="1"><stop stop-color="#72777a"/><stop offset=".1" stop-color="#43494c"/><stop offset=".48" stop-color="#303437"/><stop offset=".95" stop-color="#15191b"/><stop offset="1" stop-color="#646a69"/></linearGradient>
+        <radialGradient id="recess"><stop stop-color="#030506"/><stop offset=".67" stop-color="#101415"/><stop offset="1" stop-color="#41484b"/></radialGradient>
+        <clipPath id="insert-stop"><path d="M-410-115H3V115H-410z"/></clipPath>
+      </defs>
+      <g class="door-handle">
+        <path d="M301 236q10-63 117-69l186 2q70 2 62 61-5 52-83 62l-162 16q-116 7-120-72z" fill="url(#recess)" stroke="#6d7373" stroke-opacity=".6"/>
+        <path d="M329 199q43-38 102-37l151 3q53 2 69 20 18 18 2 32-12 10-41 12l-160 4q-25 1-47 14l-42 26-39-12z" fill="url(#shell)" stroke="#727979" stroke-width="1.5"/>
+        <path d="M403 188q27-16 57-15l126 3q25 0 45 10" fill="none" stroke="#f3f3e9" opacity=".54" stroke-width="1.5"/>
+        <path d="M318 185q-35 9-44 44-9 42 28 61 25 13 56-5 31-19 40-53 6-30-15-47-24-16-65 0z" fill="url(#shell)" stroke="#7a8081"/>
+      </g>
+      <g transform="translate(335 238) rotate(-13)">
+        <ellipse rx="39" ry="41" fill="#090c0e" stroke="#929a9c" stroke-width="2"/>
+        <ellipse rx="32" ry="35" fill="url(#metal)" stroke="#15191b" stroke-width="3"/>
+        <g class="lock-core"><ellipse rx="20" ry="24" fill="#686e6e" stroke="#d6d8d3" stroke-width="1.2"/><path d="M-11-4h17l4 3v4l-4 2h-17z" fill="#0b0e0e"/></g>
+        <g clip-path="url(#insert-stop)"><g class="key-slide"><g class="key-twist">
+          <path d="M-160-9h140l15 5 5 4-7 5h-12l-7-4-7 5-9-2-9 5h-91l-17 4z" fill="url(#metal)" stroke="#2c3437" stroke-width="1"/>
+          <path d="M-145-4h124m-122 6h83" fill="none" stroke="#eef0e9" stroke-width="1.4" opacity=".85"/>
+          <path fill-rule="evenodd" d="M-275-46q-16-5-22 11l-15 63q-3 14 11 18l97 19q18 3 31-10l34-37q9-11 4-24l-9-19q-4-10-19-12zm-14 18-8 39q-1 5 5 6l8 1 10-42q1-4-4-5z" fill="url(#metal)" stroke="#151a1d" stroke-width="2"/>
+          <path d="M-264-36l92 18q12 2 16 12l5 12q4 8-5 17l-30 31q-7 8-22 6l-78-16z" fill="url(#grip)" stroke="#828788"/>
+          <path d="M-251-19l55 11m-60 26 48 10" stroke="#101416" opacity=".8"/><text x="-231" y="10" fill="#e6e5df" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="700" letter-spacing="1.1" transform="rotate(11 -231 10)">CARBURG</text>
+        </g></g></g>
+      </g>
+    </svg>
+    <div class="cab-indicator" aria-hidden="true"><span id="lock-label">Замок закрыт</span><i></i><b id="lock-code">01 / 02</b></div>
+  </div>
+  <div class="cab-login"><div class="cab-login-inner">
+    <h1 id="entry-title">Личный <br>кабинет<span>.</span></h1>
+    <p class="lead">Откройте демоверсию: посмотрите автомобиль, этап заказа и пример переписки. Вход по настоящему ключу здесь отключён.</p>
+    <form hidden inert id="login-form" method="post"><label for="client-key">Ключ доступа</label><input type="password" name="key" id="client-key" disabled required autocomplete="current-password" maxlength="256" aria-describedby="key-help" placeholder="Введите ваш ключ"><p id="key-help">Ключ выдаёт ваш менеджер CARBURG.</p>
+    <button class="cab-button" type="submit" disabled>Открыть кабинет <span aria-hidden="true">→</span></button></form>
+    <p id="entry-msg" class="cab-notice" role="status"></p>
+    <button type="button" class="demo-link" id="demo" disabled>Посмотреть демоверсию <span aria-hidden="true">↗</span></button>
+    <noscript><p>Для входа нужен JavaScript. Связаться с менеджером можно <a href="https://t.me/carburg_echteautos">в Telegram</a>.</p></noscript>
+  </div></div>
+</section>
+<section class="cab-dash" id="dashboard" hidden aria-labelledby="dash-title">
+  <div class="dash-top"><p id="owner"></p><button type="button" id="logout">Выйти</button></div>
+  <h1 id="dash-title" tabindex="-1">Мой заказ<span>.</span></h1>
+  <p id="dash-notice" class="cab-notice" role="status"></p>
+  <section id="empty-order" hidden><h2>Заказ ещё не добавлен</h2><p>Когда менеджер добавит автомобиль, здесь появятся маршрут и этапы. Пока можно написать ему ниже.</p></section>
+  <div id="order" class="order-grid"><article class="order-main"><div class="order-meta"><span>Автомобиль</span><span id="order-number"></span></div><h2 id="car-model"></h2><p id="car-origin"></p><div class="order-note"><h3>От менеджера</h3><p id="order-note"></p></div></article>
+    <article class="order-stages"><div class="stage-head"><h2>Ход заказа</h2><span id="stage-counter"></span></div><ol id="timeline"><li>Заявка</li><li>Подбор</li><li>Покупка</li><li>Доставка</li></ol><p id="order-updated"></p></article></div>
+  <section class="inbox"><div class="inbox-head"><h2>Переписка</h2><button type="button" id="refresh">Обновить</button></div>
+    <button class="history-link" type="button" id="earlier" hidden>Ранние сообщения ↑</button><ol id="thread" aria-label="Сообщения по заказу"></ol>
+    <form id="compose" method="post"><label for="draft">Сообщение менеджеру</label><textarea id="draft" name="body" rows="3" maxlength="1500" required placeholder="Что хотите уточнить?"></textarea><button type="submit" class="cab-button">Отправить <span aria-hidden="true">→</span></button></form>
+    <p id="reply-notice" class="cab-notice" role="status"></p>
+  </section>
+</section>
+</main>
+<footer><a class="brand" href="index.html">CARBURG</a><a href="privacy.html">Конфиденциальность</a><a href="https://t.me/carburg_echteautos">Связаться с менеджером ↗</a></footer>
+</body></html>
